@@ -1,0 +1,61 @@
+<div class="container mat-elevation-z0">
+
+    <button mat-icon-button (click)="addPersona()">
+            <span [inlineSVG]="'./assets/media/svg/icons/Communication/Add-user.svg'" cacheSVG="true"
+        class="svg-icon svg-icon-xl svg-icon-primary"></span>
+        Agregar
+    </button>
+
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="str_documento">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Cédula</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.str_documento}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="str_nombres">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombres</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.str_nombres}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="str_telefono">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.str_telefono}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="str_celular">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Celular</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.str_celular}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="str_correo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Correo</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.str_correo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="str_direccion">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Domicilio</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.str_direccion}}</mat-cell>
+        </ng-container>
+
+
+        <!-- actions -->
+        <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+
+            <mat-cell *matCellDef="let row; let i=index;">
+                <!-- <button mat-icon-button color="accent" >
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button> -->
+                <button mat-icon-button color="accent">
+            <mat-icon aria-label="Delete" (click)="eliminarPersona(i)" >delete</mat-icon>
+          </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>

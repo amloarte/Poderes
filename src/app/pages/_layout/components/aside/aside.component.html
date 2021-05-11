@@ -1,0 +1,96 @@
+<!--begin::Brand-->
+<div class="brand flex-column-auto" id="kt_brand" [ngClass]="brandClasses">
+  <!--begin::Logo-->
+  <a routerLink="/" class="brand-logo">
+    <span class="menu-text"> Poderes </span>
+    <!-- <img alt="Logo" [attr.src]="headerLogo" /> -->
+  </a>
+  <!--end::Logo-->
+
+  <ng-container *ngIf="asideSelfMinimizeToggle">
+    <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
+      <span
+        [inlineSVG]="
+          './assets/media/svg/icons/Navigation/Angle-double-left.svg'
+        "
+        cacheSVG="true"
+        class="svg-icon svg-icon-xl"
+      ></span>
+    </button>
+  </ng-container>
+</div>
+<!--end::Brand-->
+
+<!--begin::Aside Menu-->
+<div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+ 
+  <!--begin::Menu Container-->
+  <div
+    id="kt_aside_menu"
+    class="aside-menu"
+    [ngClass]="asideMenuCSSClasses"
+    data-menu-vertical="1"
+    [attr.data-menu-scroll]="asideMenuScroll"
+  >
+    <!-- begin::Menu Nav -->
+    <ul class="menu-nav" [ngClass]="ulCSSClasses" >
+      
+      <!-- <li class="menu-section">
+        <h4 class="menu-text">Funcionalidades</h4>
+        <i class="menu-icon flaticon-more-v2"></i>
+      </li> -->
+
+      <!-- begin::1 Level -->
+      <li
+        class="menu-item menu-item-submenu"
+        aria-haspopup="true"
+        data-menu-toggle="hover"
+        routerLinkActive="menu-item-open"
+        *ngFor="let menu of funcionalidadPadre"
+      >
+        <a 
+          class="menu-link menu-toggle" 
+          routerLinkActive="active"
+          routerLink="{{ menu.url }}"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Design/Component.svg'"
+            cacheSVG="true"
+            class="svg-icon menu-icon"
+          ></span>
+          <span class="menu-text">{{ menu.nombre }}</span>
+          <i class="menu-arrow" *ngIf="menu.submenu.length > 0"></i>
+        </a>
+        <div class="menu-submenu" *ngIf="menu.submenu.length > 0">
+          <ul class="menu-subnav">
+
+            <li
+              class="menu-item"
+              routerLinkActive="menu-item-active"
+              aria-haspopup="true"
+              data-menu-toggle="hover"
+              *ngFor="let item of menu.submenu"
+            >
+              <a
+                class="menu-link"
+                routerLink="poderes/{{ item.fun_url }}"
+                routerLinkActive="active"
+              >
+                <i class="menu-bullet menu-bullet-dot">
+                  <span></span>
+                </i>
+
+                <span class="menu-text">{{ item.fun_nombre }}</span>
+
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <!-- end:: section -->
+    </ul>
+    <!-- end::Menu Nav -->
+  </div>
+  <!--end::Menu Container-->
+</div>
+<!--end::Aside Menu-->

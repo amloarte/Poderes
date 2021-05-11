@@ -1,0 +1,95 @@
+<div class="container">
+    <div class=" mt-5">
+        <mat-card>
+            <mat-card-title>Mandante/Poderdante</mat-card-title>
+            <mat-card-subtitle>DATOS DEL OTORGANTE</mat-card-subtitle>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <app-registro-persona tipoPersona="TITULAR"></app-registro-persona>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class=" mt-5">
+        <mat-card>
+            <mat-card-title>Mandatario/Apoderado</mat-card-title>
+            <mat-card-subtitle>DATOS DEL BENEFICIARIO</mat-card-subtitle>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <div class="pt-5">
+                    <mat-label>Facultades concedidas a los mandatarios de forma:</mat-label>
+                    <mat-radio-group>
+                        <div class="pt-5">
+                            <mat-radio-button value="1" name="formaFacultades1">Conjunta</mat-radio-button>
+                            <mat-radio-button value="2" name="formaFacultades2">Indistinta</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
+                </div>
+                <app-registro-persona tipoPersona="BENEFICIARIO"></app-registro-persona>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class=" mt-5">
+        <mat-card>
+            <mat-card-title>OTORGAMIENTO</mat-card-title>
+            <mat-card-subtitle>DATOS DEL OTORGAMIENTO DEL PODER</mat-card-subtitle>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <form class="pt-5">
+
+                    <div class="row">
+                        <!-- dropdawn Ubicación -->
+                        <div class="col-9">
+                            <app-dropdaw-cascada-pais (pais)="obtenerPais($event)"></app-dropdaw-cascada-pais>
+                        </div>
+                        <!-- dropdawn oficinas -->
+                        <div class="col-3">
+                            <app-dropdawn-oficinas></app-dropdawn-oficinas>
+                        </div>
+                    </div>
+
+                    <!-- control fechas poderes -->
+                    <ng-container>
+                        <app-fechas-poderes></app-fechas-poderes>
+                    </ng-container>
+
+                    <!-- Instancia Otorgamiento del Poder -->
+                    <ng-container>
+                        <app-instancia-otorgamiento></app-instancia-otorgamiento>
+                    </ng-container>
+
+
+                    <mat-divider></mat-divider>
+                    <mat-card-subtitle class="mt-5">Registro de Facultades al beneficiario</mat-card-subtitle>
+                    <mat-divider></mat-divider>
+
+                    <ng-container>
+                        <app-facultades></app-facultades>
+                    </ng-container>
+
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="mt-5">
+        <mat-card>
+            <mat-card-title>Adjuntar Archivos</mat-card-title>
+            <mat-card-subtitle>Subir todos los archivos relacionados con el poder</mat-card-subtitle>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <input type="file" name="" id="">
+                <!-- <app-subir-documentos></app-subir-documentos> -->
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col text-center">
+            <button class="btn btn-sm btn-success mr-1" (click)="registrarPoder()"> GUARDAR </button>
+            <button class="btn btn-sm btn-primary ml-1"> CANCELAR </button>
+        </div>
+    </div>
+
+</div>

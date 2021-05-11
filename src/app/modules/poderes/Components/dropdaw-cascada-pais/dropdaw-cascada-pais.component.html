@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Seleccione Pais" [(ngModel)]="selectPaises">
+                <mat-option *ngFor="let pais of paises" value="{{ pais.codigo }}">
+                    {{ pais.pais }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Seleccione provincia" name="selectProvincias" [(ngModel)]="selectProvincia" (ngModelChange)="selectCascada('ciudad', selectProvincia)">
+                <mat-option *ngFor="let provincia of provincias" value="{{ provincia.codigo }}">
+                    {{ provincia.provincia}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Seleccione ciudad" [(ngModel)]="selectCicudad" name="selectCiudad">
+                <mat-option *ngFor="let ciudad of ciudades" value="{{ ciudad.codigo }}">
+                    {{ ciudad.ciudad }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+</div>
