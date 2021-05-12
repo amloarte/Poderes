@@ -84,6 +84,6 @@ export class FacultadesComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.prm_nemonico + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${ row.prm_nemonico + 1}`;
   }
 }

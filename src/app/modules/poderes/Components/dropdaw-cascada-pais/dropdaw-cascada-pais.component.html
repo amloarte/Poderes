@@ -21,7 +21,7 @@
 
     <div class="col">
         <mat-form-field class="example-full-width">
-            <mat-select placeholder="Seleccione ciudad" [(ngModel)]="selectCicudad" name="selectCiudad">
+            <mat-select placeholder="Seleccione ciudad" [(ngModel)]="selectCicudad" name="selectCiudad" (ngModelChange)="enviarSeleccionados()">
                 <mat-option *ngFor="let ciudad of ciudades" value="{{ ciudad.codigo }}">
                     {{ ciudad.ciudad }}
                 </mat-option>

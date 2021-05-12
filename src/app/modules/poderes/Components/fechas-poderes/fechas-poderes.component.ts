@@ -1,5 +1,6 @@
 import { FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-fechas-poderes',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FechasPoderesComponent implements OnInit {
 
+  @Output()
+  fechasSeleccionadas: EventEmitter<object> = new EventEmitter<object>();
   fechaOtorgamiento = new Date
   fechaVencimiento: Date;
   fechaNotificacion: Date;
@@ -20,4 +23,14 @@ export class FechasPoderesComponent implements OnInit {
 
   ngOnInit(): void {}
   
+
+  enviarFechas(){
+
+    var fechas = {
+      fecha_otorgamiento: moment(this.controlFechaOtorg.value).format('L'),
+      fecha_vencimiento: moment(this.controlFechaVenc.value).format('L'),
+      fecha_notificacion: moment(this.controlFechaNotif.value).format('L')
+    }
+    this.fechasSeleccionadas.emit(fechas);
+  }
 }

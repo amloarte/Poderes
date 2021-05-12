@@ -21,4 +21,3 @@ export const NOMBRE_SISTEMA = 'MEGOPODERES';
 
 // TERMINAL
 export const TERMINAL = '192.168.40.35';
-

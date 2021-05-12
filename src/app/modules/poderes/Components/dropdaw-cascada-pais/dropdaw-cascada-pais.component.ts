@@ -9,9 +9,12 @@ import { CatalogosService } from '../../services/catalogos.service';
 })
 export class DropdawCascadaPaisComponent implements OnInit {
 
-  @Output() pais = new EventEmitter();
-  @Output() provincia = new EventEmitter();
-  @Output() ciudad = new EventEmitter();
+  @Output() 
+  seleccionados: EventEmitter<object>= new EventEmitter<object>();
+  // @Output() 
+  // provincia: EventEmitter<string>= new EventEmitter<string>();
+  // @Output() 
+  // ciudad: EventEmitter<string>= new EventEmitter<string>();
 
   selectPaises = '1';
   selectProvincia: string;
@@ -50,6 +53,13 @@ export class DropdawCascadaPaisComponent implements OnInit {
     });
   }
 
-
+  enviarSeleccionados(){
+    var seleccionados = {
+      pais : this.selectPaises,  
+      provincia : this.selectProvincia,  
+      ciudad : this.selectCicudad,  
+    }
+    this.seleccionados.emit(seleccionados);
+  }
 
 }

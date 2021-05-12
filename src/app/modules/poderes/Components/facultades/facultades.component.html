@@ -54,13 +54,3 @@
         <mat-paginator [length]="3000" [pageSizeOptions]="[5, 10]"></mat-paginator>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-12">
-        <mat-form-field class="example-full-width">
-            <mat-label> Facultades que subsisten</mat-label>
-            <textarea matInput #input maxlength="300" rows="5" cols="40" placeholder="Especifique"></textarea>
-            <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
-        </mat-form-field>
-    </div>
-</div>

@@ -53,13 +53,13 @@ export class PersonasService {
     this.dataChange = new BehaviorSubject<Persona[]>(this.personas);
   } 
 
-  registrarPersonas(){
+  registrarPersonas(): Promise<[]>{
     const url = URL_PODERES +"?str_operacion=AGREGAR_PERSONAS";
     var objRegistraPersonas = {
       lst_personas: this.personas
     }
+    
     return new Promise( (resolve, reject) => {
-
       this.http.post(url, objRegistraPersonas )
 
         .subscribe((resp: RespuestaTransaccion) => {

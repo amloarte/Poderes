@@ -72,10 +72,10 @@ export class LoginService {
             this.usuario = respuesta.T;
             this.currentUserSubject = new BehaviorSubject<Usuario>(respuesta.T);
 
-            this.getUbicacionUsuario(this.usuario.id_perfil).then( (resp: any) => {
-                this.usuario.pv_provincia = resp[0].pv_provincia
-                this.usuario.ci_ciudad = resp[0].ci_ciudad
-            });
+            // this.getUbicacionUsuario(this.usuario.id_perfil).then( (resp: any) => {
+            //     this.usuario.pv_provincia = resp[0].pv_provincia
+            //     this.usuario.ci_ciudad = resp[0].ci_ciudad
+            // });
 
             this.guardarStorange(this.usuario);
 

@@ -8,7 +8,6 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthComponent } from './auth.component';
-import { InterceptorService } from './_services/interceptor.service';
 
 @NgModule({
   declarations: [

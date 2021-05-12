@@ -1,17 +1,9 @@
-<mat-form-field>
-    <div>
-      <mat-toolbar>
-        <!-- Display files names -->
-        <input matInput [(ngModel)]="fileAttr" readonly name="name" />
-  
-        <!-- Browse Button -->
-        <button mat-flat-button color="primary">
-          Browse File
-        </button>
-      </mat-toolbar>
-  
-      <!-- Fetch selected filed on change -->
-      <input type="file" #fileInput id="uploadFile" (change)="uploadFileEvt($event)" name="uploadFile" multiple="multiple"
-        accept="image/*" />
-    </div>
-  </mat-form-field>
+<!-- <mat-form-field>
+    <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+    <input type="file" #fileInput id="uploadFile" (change)="uploadFileEvt($event)" name="uploadFile" multiple="multiple" />
+</mat-form-field> -->
+
+<div class="custom-file">
+    <input class="custom-file-input" type="file" #fileInput id="uploadFile" (change)="uploadFileEvt($event.target.files)" name="uploadFile" multiple="multiple" required/>
+    <label class="custom-file-label" for="validatedCustomFile">Buscar Documentos</label>
+</div>

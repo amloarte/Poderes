@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { PagesRoutingModule } from './pages-routing.module';
-
 import { LayoutComponent } from './_layout/layout.component';
 import { ScriptsInitComponent } from './_layout/init/scipts-init/scripts-init.component';
 import { HeaderMobileComponent } from './_layout/components/header-mobile/header-mobile.component';

@@ -18,12 +18,12 @@
             <mat-card-content>
                 <div class="pt-5">
                     <mat-label>Facultades concedidas a los mandatarios de forma:</mat-label>
-                    <mat-radio-group>
-                        <div class="pt-5">
-                            <mat-radio-button value="1" name="formaFacultades1">Conjunta</mat-radio-button>
-                            <mat-radio-button value="2" name="formaFacultades2">Indistinta</mat-radio-button>
-                        </div>
-                    </mat-radio-group>
+                    <div class="pt-5">
+                        <mat-radio-group>
+                            <mat-radio-button [value]="1" (click)="valorFormaFacultad($event.target.value)">Conjunta</mat-radio-button>
+                            <mat-radio-button [value]="2" (click)="valorFormaFacultad($event.target.value)">Indistinta</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
                 </div>
                 <app-registro-persona tipoPersona="BENEFICIARIO"></app-registro-persona>
             </mat-card-content>
@@ -41,22 +41,47 @@
                     <div class="row">
                         <!-- dropdawn Ubicación -->
                         <div class="col-9">
-                            <app-dropdaw-cascada-pais (pais)="obtenerPais($event)"></app-dropdaw-cascada-pais>
+                            <app-dropdaw-cascada-pais (seleccionados)="recibirID($event)"></app-dropdaw-cascada-pais>
                         </div>
                         <!-- dropdawn oficinas -->
                         <div class="col-3">
-                            <app-dropdawn-oficinas></app-dropdawn-oficinas>
+                            <app-dropdawn-oficinas (id_oficina)="recibirOficinaId($event)"></app-dropdawn-oficinas>
                         </div>
                     </div>
 
                     <!-- control fechas poderes -->
                     <ng-container>
-                        <app-fechas-poderes></app-fechas-poderes>
+                        <app-fechas-poderes (fechasSeleccionadas)="recibirFechas($event)"></app-fechas-poderes>
                     </ng-container>
 
                     <!-- Instancia Otorgamiento del Poder -->
                     <ng-container>
-                        <app-instancia-otorgamiento></app-instancia-otorgamiento>
+                        <div class="row">
+
+                            <div class="col-3">
+
+                                <mat-form-field class="example-full-width">
+                                    <mat-select placeholder="Instancia en la que se otrogo el Poder" name="int_instancia" [(ngModel)]="poder.int_instancia">
+                                        <mat-option *ngFor="let instancia of instituciones" value="{{ instancia.prm_id }}">
+                                            {{ instancia.prm_nemonico }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div class="col-7">
+
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Espeficique instancia de otorgamiento</mat-label>
+                                    <textarea matInput #input maxlength="300" rows="5" cols="40" placeholder="Especifique" name="str_descripcion_instancia" [(ngModel)]="poder.str_descripcion_instancia"></textarea>
+                                    <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+                        <!-- <app-instancia-otorgamiento></app-instancia-otorgamiento> -->
                     </ng-container>
 
 
@@ -66,6 +91,15 @@
 
                     <ng-container>
                         <app-facultades></app-facultades>
+                        <div class="row">
+                            <div class="col-12">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label> Facultades que subsisten</mat-label>
+                                    <textarea matInput #input maxlength="300" rows="5" cols="40" placeholder="Especifique" name="str_facultades_subsisten" [(ngModel)]="poder.str_facultades_subsisten"></textarea>
+                                    <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
                     </ng-container>
 
                 </form>
@@ -79,8 +113,11 @@
             <mat-card-subtitle>Subir todos los archivos relacionados con el poder</mat-card-subtitle>
             <mat-divider></mat-divider>
             <mat-card-content>
-                <input type="file" name="" id="">
-                <!-- <app-subir-documentos></app-subir-documentos> -->
+                <div class="row">
+                    <div class="col">
+                        <app-subir-documentos (documento)="enviarDocumento($event)"></app-subir-documentos>
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>

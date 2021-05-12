@@ -1,8 +1,8 @@
 <mat-form-field>
     <mat-label>Oficina</mat-label>
-    <mat-select placeholder="Oficina" [(ngModel)]="idOficina">
+    <mat-select placeholder="Oficina" [(ngModel)]="idOficina" (ngModelChange)="enviarIdOficina()">
         <mat-option *ngFor="let oficina of oficinas" value="{{oficina.codigo}}">
-        {{ oficina.descripcion }}
+            {{ oficina.descripcion }}
         </mat-option>
     </mat-select>
 </mat-form-field>

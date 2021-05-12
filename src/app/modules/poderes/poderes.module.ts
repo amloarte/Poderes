@@ -58,7 +58,6 @@ import { DropdawnOficinasComponent } from './Components/dropdawn-oficinas/dropda
 import { DropdawCascadaPaisComponent } from './Components/dropdaw-cascada-pais/dropdaw-cascada-pais.component';
 import { FechasPoderesComponent } from './Components/fechas-poderes/fechas-poderes.component';
 import { SubirDocumentosComponent } from './Components/subir-documentos/subir-documentos.component';
-import { InstanciaOtorgamientoComponent } from './Components/instancia-otorgamiento/instancia-otorgamiento.component';
 import { RegistroPersonaComponent } from './Components/registro-persona/registro-persona.component';
 import { AgregarPersonaComponent } from './utils/agregar-persona/agregar-persona.component';
 import { EditarPersonaComponent } from './utils/editar-persona/editar-persona.component';
@@ -112,7 +111,6 @@ const routes: Routes = [
     DropdawCascadaPaisComponent,
     FechasPoderesComponent,
     SubirDocumentosComponent,
-    InstanciaOtorgamientoComponent,
     RegistroPersonaComponent,
     AgregarPersonaComponent,
     EditarPersonaComponent,

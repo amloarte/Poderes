@@ -1,5 +1,5 @@
 import { LoginService } from '../../../auth/_services/login.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CatalogosService } from '../../services/catalogos.service';
 
 @Component({
@@ -8,8 +8,10 @@ import { CatalogosService } from '../../services/catalogos.service';
   styleUrls: ['./dropdawn-oficinas.component.scss']
 })
 export class DropdawnOficinasComponent implements OnInit {
-  
-  idOficina: string;
+  @Output()
+  id_oficina: EventEmitter<number> = new EventEmitter<number>();
+
+  idOficina: number;
   nombreOficina: string;
   oficinas: {};
 
@@ -19,7 +21,7 @@ export class DropdawnOficinasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.idOficina = this.usuarioService.usuario.id_oficina.toString();
+    this.idOficina = this.usuarioService.usuario.id_oficina;
     this.getCatalogos('oficina', '0');
   }
 
@@ -29,5 +31,7 @@ export class DropdawnOficinasComponent implements OnInit {
         this.oficinas = resp;
       });
   }
-
+  enviarIdOficina(){
+    this.id_oficina.emit(this.idOficina);
+  }
 }

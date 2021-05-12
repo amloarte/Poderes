@@ -1,63 +1,29 @@
 <div class="row">
     <div class="col">
         <mat-form-field>
-            <input
-              matInput
-              [matDatepicker]="dateOtorgamiento"
-              placeholder="Fecha de otorgamiento"
-              name="controlFechaOtorg"
-              [formControl]="controlFechaOtorg"
-              [max]="fechaVencimiento"
-              [(ngModel)]="fechaOtorgamiento"
-              required
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="dateOtorgamiento"
-            ></mat-datepicker-toggle>
+            <input matInput [matDatepicker]="dateOtorgamiento" placeholder="Fecha de otorgamiento" name="controlFechaOtorg" [formControl]="controlFechaOtorg" [max]="fechaVencimiento" [(ngModel)]="fechaOtorgamiento" required />
+            <mat-datepicker-toggle matSuffix [for]="dateOtorgamiento"></mat-datepicker-toggle>
             <mat-datepicker #dateOtorgamiento></mat-datepicker>
             <mat-error>Ingrese fecha otorgamiento</mat-error>
-          </mat-form-field>
-    </div>
-    
-    <div class="col">
-        <mat-form-field *ngIf="fechaOtorgamiento">
-          <input 
-            matInput
-            [matDatepicker]="dateVencimiento"
-            placeholder="Fecha de vencimiento"
-            name="controlFechaVenc"
-            [formControl]="controlFechaVenc"
-            [min]="fechaOtorgamiento"
-            [(ngModel)]="fechaVencimiento"
-          />
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="dateVencimiento"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #dateVencimiento></mat-datepicker>
-          <mat-error>Ingrese fecha de vencimiento</mat-error>
         </mat-form-field>
     </div>
-    
+
+    <div class="col">
+        <mat-form-field *ngIf="fechaOtorgamiento">
+            <input matInput [matDatepicker]="dateVencimiento" placeholder="Fecha de vencimiento" name="controlFechaVenc" [formControl]="controlFechaVenc" [min]="fechaOtorgamiento" [(ngModel)]="fechaVencimiento" />
+            <mat-datepicker-toggle matSuffix [for]="dateVencimiento"></mat-datepicker-toggle>
+            <mat-datepicker #dateVencimiento></mat-datepicker>
+            <mat-error>Ingrese fecha de vencimiento</mat-error>
+        </mat-form-field>
+    </div>
+
     <div class="col">
         <mat-form-field *ngIf="fechaVencimiento && fechaOtorgamiento">
-          <input
-            matInput
-            [matDatepicker]="dateNotificacion"
-            name="controlFechaNotif"
-            [formControl]="controlFechaNotif"
-            placeholder="Fecha de notificacion a la Cooperativa"
-            [min]="fechaOtorgamiento"
-            [max]="fechaVencimiento"
-            [(ngModel)]="fechaNotificacion"
-          />
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="dateNotificacion"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #dateNotificacion></mat-datepicker>
-          <mat-error>Ingrese fecha de Notificación a la Cooperativa</mat-error>
+            <input matInput [matDatepicker]="dateNotificacion" name="controlFechaNotif" [formControl]="controlFechaNotif" placeholder="Fecha de notificacion a la Cooperativa" [min]="fechaOtorgamiento" [max]="fechaVencimiento" [(ngModel)]="fechaNotificacion" (ngModelChange)="enviarFechas()"
+            />
+            <mat-datepicker-toggle matSuffix [for]="dateNotificacion"></mat-datepicker-toggle>
+            <mat-datepicker #dateNotificacion></mat-datepicker>
+            <mat-error>Ingrese fecha de Notificación a la Cooperativa</mat-error>
         </mat-form-field>
     </div>
 </div>
