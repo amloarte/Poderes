@@ -54,11 +54,11 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
     this.formularioRegistro();
-    this.getParametros('INSTANCIA_OTORGAMIENTO');
+    this.getParametros('INSTANCIA_OTORGAMIENTO', 'prm_nombre');
   }
 
-  getParametros(nombre: string) {
-    this.serviceCatalogos.getParametros(nombre)
+  getParametros(nombre: string, tipo_busqueda: string) {
+    this.serviceCatalogos.getParametros(nombre, tipo_busqueda)
       .then((resp: []) => {
         this.instituciones = resp;
     });

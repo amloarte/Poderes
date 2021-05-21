@@ -29,7 +29,7 @@ export class FacultadesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getFacultades();
+    //this.getFacultades();
   }
 
   applyFilter(event: Event) {
@@ -48,7 +48,7 @@ export class FacultadesComponent implements OnInit {
   }
 
   getFacultades() {
-    this.serviceCatalogos.getParametros('FACULTADES_PODERES').then((resp: Parametros[]) => {
+    this.serviceCatalogos.getParametros('FACULTADES_PODERES', 'prm_nombre').then((resp: Parametros[]) => {
       this.facultades = resp;
       this.dataSource.data =  this.facultades;
     });

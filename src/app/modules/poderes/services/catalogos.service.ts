@@ -16,7 +16,7 @@ export class CatalogosService {
     private route: Router,
   ) { }
 
-  getCatalogos(nombre: string, filtro: string ) {
+  async getCatalogos(nombre: string, filtro: string ) {
 
     let params = new HttpParams();
     params = params.set('str_operacion', "CONSULTAR_CATALOGOS");
@@ -25,16 +25,13 @@ export class CatalogosService {
       str_filtro: filtro
     } 
 
-    
-    
-    // params = params.set('', nombre);
-    // params = params.set('str_filtro', filtro);
-
     return new Promise( (resolve, reject) => {
 
       this.http.post(URL_PODERES, objCatalogos, { params })
 
         .subscribe((resp: RespuestaTransaccion) => {
+          console.log(resp.cuerpo);
+          
           if (resp.codigo === '0') {
             resolve(resp.cuerpo);
           } else {
@@ -46,16 +43,18 @@ export class CatalogosService {
   }
 
 
-  getParametros(nombre: string ) {
+  getParametros(nombre: string, tipo_busqueda: string ) {
 
-    const url = URL_PODERES + '?str_operacion=CONSULTA_PARAMETROS';
+    let params = new HttpParams();
+    params = params.set('str_operacion', "CONSULTA_PARAMETROS");
 
     var objParametros = {
-      str_nombre_parametro: nombre
+      str_tipo_busqueda: tipo_busqueda,
+      str_filtro: nombre
     } 
 
     return new Promise( (resolve, reject) => {
-      this.http.post(url, objParametros)
+      this.http.post(URL_PODERES, objParametros, { params })
         .subscribe((resp: RespuestaTransaccion) => {
           if (resp.codigo === '0') {
             resolve(resp.cuerpo);

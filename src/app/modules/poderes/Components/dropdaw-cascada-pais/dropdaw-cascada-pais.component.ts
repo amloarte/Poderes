@@ -39,6 +39,7 @@ export class DropdawCascadaPaisComponent implements OnInit {
   selectCascada(nombre: string, codigo: string) {
 
     this.serviceCatalogos.getCatalogos(nombre, codigo).then((resp: []) => {
+      console.log(resp)
       switch (nombre) {
         case 'paises':
           this.paises = resp;

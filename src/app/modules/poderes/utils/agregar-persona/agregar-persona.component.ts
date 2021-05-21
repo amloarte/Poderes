@@ -34,15 +34,16 @@ export class AgregarPersonaComponent implements OnInit {
     // this.initForm();
   }
 
-  buscarSocio(cedula: string) {
-    this.servicePersonas.getInfoCliente(cedula.trim())
+  async buscarSocio(cedula: string) {
+    await this.servicePersonas.getInfoCliente(cedula.trim())
         .then((resp: Persona) => {
-
+            console.log(resp);
             if(resp){
               this.persona = resp[0];
               this.persona.str_tipo = this.tipoPersona;
             }else {
               this.persona = null;
+              console.log(resp)
               alert("No se encontro resultados..")
             }
         });

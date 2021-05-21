@@ -23,9 +23,9 @@ export class PersonasService {
     return this.dataChange.value;
   }
 
-  getInfoCliente(cedula: string) {
+  async getInfoCliente(cedula: string) {
 
-    const url = URL_PODERES +"?str_operacion=BUSCAR_DATOS_CLIENTE";
+    const url = URL_PODERES +"?str_operacion=BUSCAR_CLIENTE";
     var objConsultCedula = {
       str_documento: cedula
     }

@@ -29,6 +29,7 @@ export class DropdawnOficinasComponent implements OnInit {
     this.serviceCatalogos.getCatalogos(nombre, filtro)
       .then((resp: any) => {
         this.oficinas = resp;
+        console.log(this.oficinas);
       });
   }
   enviarIdOficina(){
